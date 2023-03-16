@@ -1,5 +1,3 @@
-# Dialogue Systems
-
 ## 1. Introduction to the topic / problem to solve
 Describe what are you going to explain, provide context and history, why you think is important
 
