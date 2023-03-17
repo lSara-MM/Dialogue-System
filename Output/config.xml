@@ -1,0 +1,100 @@
+<config>
+	<app>
+		<title>Twisted Tent</title>
+		<organization>UPC</organization>
+		<frcap value = "16"/>
+	</app>
+
+	<renderer>
+		<vsync value="false"/>
+		<camera x="0" y="0"/>
+	</renderer>
+
+	<window>
+		<resolution width="1024" height="767" scale="2"/>
+		<fullscreen value="false"/>
+		<borderless value="false"/>
+		<resizable value="false"/>
+		<fullscreen_window value="false"/>
+	</window>
+
+	<audio>
+		<music volume="128"/>
+		<fx volume="128"/>
+	</audio>
+
+	<fadeToBlack>
+	</fadeToBlack>
+
+	<logoScene background="Assets/Maps/logo_bg.png" audioLogoPath ="Assets/Audio/Music/music_logo.ogg"/>
+	<loseScene background="Assets/Maps/lose_bg.png" losebutton1="Assets/Maps/rect_pa.png" losebutton2="Assets/Maps/rect_gu.png"
+		musicLose="Assets/Audio/Music/the_end.ogg"/>
+
+	<introScene background="Assets/Maps/intro_bg.png" audioIntroPath ="Assets/Audio/Music/music_intro.ogg"
+				settingsPath="Assets/Textures/setting_menu.png"/>
+	
+	<scene music="Assets/Audio/Music/lvl_1.ogg" textureAttackPath="Assets/Textures/attack.png"
+	   background1 ="Assets/Maps/clouds_bg.png" background2 ="Assets/Maps/clouds_mg_1.png" background3 ="Assets/Maps/clouds_mg_2.png"
+	   coinspath="Assets/Maps/coin.png" heartspath="Assets/Maps/heart.png"
+		   settingsPath ="Assets/Textures/setting_menu.png">
+
+	<player x="120" y="260" score="0" coins="0" lives="3" attackCooldown="175" playerForce="2100"
+			texturepath="Assets/Textures/pinky_2.0.png"
+			velocity="400" width="20" height="27" FUYMGravity="250"
+			audiopathCoin="Assets/Audio/Fx/Coin.wav"
+			audiopathGem="Assets/Audio/Fx/Gem.wav"
+			audiopathJump ="Assets/Audio/Fx/sfx_jump.wav "
+			audiopathLand ="Assets/Audio/Fx/sfx_landing.wav"
+			audiopathDeath ="Assets/Audio/Fx/sfx_vaporizing.wav"
+			audiopathAttack="Assets/Audio/Fx/sfx_attack.wav"
+			audiopathSecret ="Assets/Audio/Fx/sfx_secret.wav"
+			audiopathCd ="Assets/Audio/Fx/sfx_Attack_Up.wav"
+			audiopathHealth="Assets/Audio/Fx/sfx_health.wav"
+			audiopathPortal="Assets/Audio/Fx/sfx_portal.wav"/>
+		
+	<enemy x_E="300" y_E="50" type_E="flying" detectionDistance="20" 
+			texturepath_E="Assets/Textures/ss_duck.png"
+			velocity_E="160" width_E="16" height_E="12"
+			audiopathDeath_E ="Assets/Audio/Fx/sfx_enemyFlyDeath.wav"/>
+
+	<enemy x_E="1000" y_E="50" type_E="flying" detectionDistance="20"
+			texturepath_E="Assets/Textures/ss_duck.png"
+			velocity_E="160" width_E="16" height_E="12"
+			audiopathDeath_E ="Assets/Audio/Fx/sfx_enemyFlyDeath.wav"/>
+
+	<enemy x_E="1250" y_E="50" type_E="flying" detectionDistance="20"
+			texturepath_E="Assets/Textures/ss_duck.png"
+			velocity_E="160" width_E="16" height_E="12"
+			audiopathDeath_E ="Assets/Audio/Fx/sfx_enemyFlyDeath.wav"/>
+
+	<enemy x_E="750" y_E="50" type_E="basic" detectionDistance="10"
+			texturepath_E="Assets/Textures/ss_enemies.png"
+			velocity_E="250" width_E="16" height_E="16"
+			audiopathDeath_E ="Assets/Audio/Fx/sfx_enemyFlyDeath.wav"/>
+
+	<enemy x_E="1552" y_E="50" type_E="basic" detectionDistance="10"
+		texturepath_E="Assets/Textures/ss_enemies.png"
+		velocity_E="250" width_E="16" height_E="16"
+		audiopathDeath_E ="Assets/Audio/Fx/sfx_enemyFlyDeath.wav"/>
+		
+	<!--Portal-->
+	<portal name="portal" x="1137" y="145" width ="13" height ="42" texturepath="Assets/Textures/portal.png"/>
+
+	<!--Save-->
+	<save name="save" x="960" y="310" width ="20" height ="27" texturepath="Assets/Textures/save.png"
+		  audiopath ="Assets/Audio/Fx/sfx_save.wav"/>
+
+		<!--GEM-->
+	<item2  name="gem" x="2072" y="285" texturepath="Assets/Maps/gems.png"/>
+		
+
+</scene>
+	<map>
+		<mapfolder path="Assets/Maps/"/>
+		<mapfile path="Assets/Maps/map1.tmx"/>
+
+		<map1>
+		</map1>
+	</map>
+
+</config>
