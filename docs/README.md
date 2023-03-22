@@ -2,7 +2,10 @@
 
 ## 1. What are dialogue systems
 
-Dialogue systems are a game mechanic used in many games to communicate with the player in a more natural way, usually to guide them through the game and story and keep them involved. This is found in many adventure games and RPG, however, certain video game genres such as dating sims and visual novels are completely based on this mechanic. 
+Dialogue systems are a game mechanic used in many games to communicate with the player in a more natural way, usually to guide them through the game and story and keep them involved. This is found in many adventure games and RPG, however, certain video game genres such as dating sims and visual novels are completely based on this mechanic.
+
+In RPGs and adventure games, certain conversations within the game are triggered by in-game events, such as completing a dungeon or obtaining a particular item.
+
 
 ###  1.1 Origin
 The core of this mechanic, the dialogue tree, was first described in "The Garden of Forking Paths," a 1941 story by Jorge Luis Borges,  in which the combination book of Ts'ui Pên allows all major outcomes from an event branch into their own chapters.
