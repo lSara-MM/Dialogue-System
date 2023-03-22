@@ -1,5 +1,3 @@
-# DIALOGUE SYSTEMS
-
 ## 1. What are dialogue systems
 
 Dialogue systems are a game mechanic used in many games to communicate with the player in a more natural way, usually to guide them through the game and story and keep them involved. This is found in many adventure games and RPG, however, certain video game genres such as dating sims and visual novels are completely based on this mechanic. 
@@ -92,13 +90,13 @@ It is preferable to leave the negligible and redundant parts for the side quests
 ## 4. TO DOs
 
 ## 5. References
-[defining-dialogue-systems](https://www.gamedeveloper.com/design/defining-dialogue-systems)
+- [defining-dialogue-systems](https://www.gamedeveloper.com/design/defining-dialogue-systems)
 
-[successful-in-game-dialogue-should-carry-players-forward](https://www.polygon.com/2014/3/17/5519270/successful-in-game-dialogue-should-carry-players-forward#:~:text=%22Conversations%20are%20a%20hallmark%20of,to%20new%20characters%20and%20locations)
+- [successful-in-game-dialogue-should-carry-players-forward](https://www.polygon.com/2014/3/17/5519270/successful-in-game-dialogue-should-carry-players-forward#:~:text=%22Conversations%20are%20a%20hallmark%20of,to%20new%20characters%20and%20locations)
 
-[video-game-dialogue-writing](https://gamedesignlounge.com/video-game-dialogue-writing/)
+- [video-game-dialogue-writing](https://gamedesignlounge.com/video-game-dialogue-writing/)
 
-[Realistic Dialogue Engine for Video Games](https://ir.lib.uwo.ca/cgi/viewcontent.cgi?referer=https://www.google.co.uk/&httpsredir=1&article=4141&context=etd)
+- [Realistic Dialogue Engine for Video Games](https://ir.lib.uwo.ca/cgi/viewcontent.cgi?referer=https://www.google.co.uk/&httpsredir=1&article=4141&context=etd)
 
-[A Summary of Research on Intelligent Dialogue Systems](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012020/pdf#:~:text=Classification%20of%20dialogue%20systems&text=According%20to%20the%20purpose%20of,and%20small%2Dtalk%20dialogue%20system)
+- [A Summary of Research on Intelligent Dialogue Systems](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012020/pdf#:~:text=Classification%20of%20dialogue%20systems&text=According%20to%20the%20purpose%20of,and%20small%2Dtalk%20dialogue%20system)
 
