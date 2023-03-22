@@ -1,3 +1,5 @@
+# Dialogue Systems
+
 ## 1. What are dialogue systems
 
 Dialogue systems are a game mechanic used in many games to communicate with the player in a more natural way, usually to guide them through the game and story and keep them involved. This is found in many adventure games and RPG, however, certain video game genres such as dating sims and visual novels are completely based on this mechanic. 
@@ -27,7 +29,7 @@ Dialogue trees are a common technique to simulate dialogue in video games since 
 
 In some games, certain branches of the tree will be inaccessible unless a particular event in the game has occurred or depending on the player’s reputation to the NPC.
 
-![Branching Dialogue Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Dialog_tree_example.svg/640px-Dialog_tree_example.svg.png)
+![Branching Dialogue Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Dialog_tree_example.svg/1200px-Dialog_tree_example.svg.png)
 
 Typically the options are limited to two or three and oftenly they just end on the same path creating the illusion of free choice to the player.
 
