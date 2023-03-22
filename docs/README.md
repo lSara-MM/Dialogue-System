@@ -29,7 +29,7 @@ Dialogue trees are a common technique to simulate dialogue in video games since 
 
 In some games, certain branches of the tree will be inaccessible unless a particular event in the game has occurred or depending on the player’s reputation to the NPC.
 
-![Branching Dialogue Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Dialog_tree_example.svg/1200px-Dialog_tree_example.svg.png)
+![Branching Dialogue Tree](https://i.stack.imgur.com/GEuBj.png)
 
 Typically the options are limited to two or three and oftenly they just end on the same path creating the illusion of free choice to the player.
 
