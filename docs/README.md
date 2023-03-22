@@ -90,7 +90,7 @@ In "Stardew Valley," the player can interact with NPCs by giving them gifts, com
 
 * **Keep it relevant**: Don't include dialogue that doesn't add anything to the story or game mechanics, players will either want to get to the more character centric parts, or to the parts that are immediately relevant to the main story. 
 
-It is preferable to leave the negligible and redundant parts for the side quests or include them in a way the player can choose whether to read it or not.  
+  It is preferable to leave the negligible and redundant parts for the side quests or include them in a way the player can choose whether to read it or not.  
 
 *  **Barks**: The bark refers to short snippets of dialogue, typically one-sentence exclamations, that characters blurt out. It is meant to give the player feedback while making the world feel like a living, responsive entity.
 
