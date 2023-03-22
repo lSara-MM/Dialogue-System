@@ -72,7 +72,7 @@ This provides a unique approach to dialogue systems in video games, allowing for
 
 | Stardew Valley (2016) | Spore (2008) |
 | --- | ----------- |
-| ![Stardew Valley (2016)](https://oyster.ignimgs.com/mediawiki/apis.ign.com/stardew-valley/c/ce/Gift.PNG) | ![Spore (2008)]https://static.wikia.nocookie.net/spore/images/c/cc/Sing.png/revision/latest?cb=20101004171123|
+| ![Stardew Valley (2016)](https://oyster.ignimgs.com/mediawiki/apis.ign.com/stardew-valley/c/ce/Gift.PNG) | ![Spore (2008)](https://static.wikia.nocookie.net/spore/images/c/cc/Sing.png/revision/latest?cb=20101004171123)|
 
 In "Stardew Valley," the player can interact with NPCs by giving them gifts, completing quests for them, and performing other actions that affect their relationship with the player character. As the relationship grows, the NPC may reveal more information about themselves or the game's story, creating a form of dialogue that is integrated into the gameplay mechanics.
 
