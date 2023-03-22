@@ -1,3 +1,5 @@
+DIALOGUE SYSTEMS
+
 # 1. What are dialogue systems
 
 Dialogue systems are a game mechanic used in many games to communicate with the player in a more natural way, usually to guide them through the game and story and keep them involved. This is found in many adventure games and RPG, however, certain video game genres such as dating sims and visual novels are completely based on this mechanic. 
