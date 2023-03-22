@@ -8,7 +8,7 @@ Dialogue systems are a game mechanic used in many games to communicate with the 
 The core of this mechanic, the dialogue tree, was first described in "The Garden of Forking Paths," a 1941 story by Jorge Luis Borges,  in which the combination book of Ts'ui Pên allows all major outcomes from an event branch into their own chapters.
 Later from 1964 to 1966, the first computer dialogue system was showcased in ELIZA and emulated an interaction with a therapist. 
 
-![ELIZA (1964-1966)](https://upload.wikimedia.org/wikipedia/commons/7/79/ELIZA_conversation.jpg)
+![ELIZA (1964-1966)](https://upload.wikimedia.org/wikipedia/commons/7/79/ELIZA_conversation.png)
 
 ## 2. Types of dialogue systems
 
@@ -40,7 +40,7 @@ Despite that, there are some games that use an evolved version whither the playe
 
 | Fallout series | Detroit: Become Human (2018) |
 | --- | ----------- |
-| ![ Fallout series](https://external-preview.redd.it/f8P_i_fMd-mPtdVyRiFMKOy88ciPVew4CGU9YmJ_W7s.jpg?width=640&crop=smart&auto=webp&s=51194a7f6424204858a10b688b1b05565caa826f) | ![Detroit: Become Human (2018)](https://i.redd.it/k9tj3vqm4hi31.png)|
+| ![Fallout series](https://external-preview.redd.it/f8P_i_fMd-mPtdVyRiFMKOy88ciPVew4CGU9YmJ_W7s.jpg?width=640&crop=smart&auto=webp&s=51194a7f6424204858a10b688b1b05565caa826f) | ![Detroit: Become Human (2018)](https://i.redd.it/k9tj3vqm4hi31.png)|
 			
 
 ### 2.3. Hub-and-Spokes
@@ -64,6 +64,17 @@ In a parser-driven dialogue system, the player input their response exactly as t
 | --- | ----------- |
 | ![Façade (2005)](https://thumbs.gfycat.com/RigidSlimyCockroach-size_restricted.gif)| ![Bot Colony (2010) {speaking or typing}](https://www.destructoid.com/wp-content/uploads/2020/12/276766-bot1.jpg)|
 
+### 2.5. Systemic Interactions
+Some games, rather than relying on traditional dialogue trees or scripted conversations, systemic interactions use the game's mechanics and systems to enable the player to interact with NPCs in unique ways.
+This provides a unique approach to dialogue systems in video games, allowing for more organic interactions, letting players engage with the game world and characters in a more dynamic and meaningful way.
+
+**Examples**:
+
+| Stardew Valley (2016) | Spore (2008) |
+| --- | ----------- |
+| ![Stardew Valley (2016)](https://oyster.ignimgs.com/mediawiki/apis.ign.com/stardew-valley/c/ce/Gift.PNG) | ![Spore (2008)]https://static.wikia.nocookie.net/spore/images/c/cc/Sing.png/revision/latest?cb=20101004171123|
+
+In "Stardew Valley," the player can interact with NPCs by giving them gifts, completing quests for them, and performing other actions that affect their relationship with the player character. As the relationship grows, the NPC may reveal more information about themselves or the game's story, creating a form of dialogue that is integrated into the gameplay mechanics.
 
 
 ## 3. Dialogue design
