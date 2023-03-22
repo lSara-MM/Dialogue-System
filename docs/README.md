@@ -8,7 +8,7 @@ Dialogue systems are a game mechanic used in many games to communicate with the 
 The core of this mechanic, the dialogue tree, was first described in "The Garden of Forking Paths," a 1941 story by Jorge Luis Borges,  in which the combination book of Ts'ui Pên allows all major outcomes from an event branch into their own chapters.
 Later from 1964 to 1966, the first computer dialogue system was showcased in ELIZA and emulated an interaction with a therapist. 
 
-![ELIZA (1964-1966)](https://upload.wikimedia.org/wikipedia/commons/7/79/ELIZA_conversation.png)
+![ELIZA (1964-1966)](https://upload.wikimedia.org/wikipedia/commons/7/79/ELIZA_conversation.jpg)
 
 ## 2. Types of dialogue systems
 
