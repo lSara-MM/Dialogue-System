@@ -34,6 +34,8 @@ bool Scene::Awake(pugi::xml_node& config)
 
 bool Scene::Start()
 {
+	dialogueSystem->LoadDialogue("dialogue.xml", 1);
+
 	// Settings
 	pSettings->GUI_id = 0;
 	pSettings->CreateSettings(this);

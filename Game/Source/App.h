@@ -20,7 +20,7 @@ class Render;
 class Textures;
 class Audio;
 
-class EntityManager;
+class DialogueSystem;
 class GuiManager;
 
 class Scene;
@@ -93,7 +93,7 @@ public:
 	Audio* audio;
 	
 	GuiManager* guiManager;
-	
+	DialogueSystem* dialogueSystem;
 	Scene* scene;
 
 	// Time control
@@ -108,7 +108,6 @@ private:
 	SString organization;
 
 	List<Module*> modules;
-
 	
 
 	Timer timer;

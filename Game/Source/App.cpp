@@ -5,6 +5,7 @@
 #include "Textures.h"
 #include "Window.h"
 
+#include "DialogueSystem.h"
 #include "GuiManager.h"
 
 #include "Scene.h"
@@ -27,6 +28,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new Textures();
 	audio = new Audio();
 	
+	dialogueSystem = new DialogueSystem();
 	guiManager = new GuiManager();
 	
 	scene = new Scene();
@@ -40,6 +42,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 
 	AddModule(scene);
 
+	AddModule(dialogueSystem);
 	AddModule(guiManager);
 
 	// Render last to swap buffer

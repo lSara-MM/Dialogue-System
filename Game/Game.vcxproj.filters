@@ -49,6 +49,9 @@
     <ClCompile Include="Source\Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\DialogueSystem.cpp">
+      <Filter>Modules\Core\Dialogue</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Animation.h">
@@ -129,6 +132,12 @@
     <ClInclude Include="Source\Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Source\DialogueSystem.h">
+      <Filter>Modules\Core\Dialogue</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DialogueTree.h">
+      <Filter>Modules\Core\Dialogue</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Utils">
@@ -151,6 +160,9 @@
     </Filter>
     <Filter Include="Scenes">
       <UniqueIdentifier>{59396da5-13ff-4cbf-85fc-91a7386282ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Core\Dialogue">
+      <UniqueIdentifier>{a0bad3ab-62c1-4bbd-8b5d-e32c4eeaf20b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

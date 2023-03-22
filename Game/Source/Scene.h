@@ -9,6 +9,7 @@
 #include "GuiCheckBox.h"
 #include "GuiSliderBar.h"
 
+#include "DialogueSystem.h"
 #include "Settings.h"
 
 struct SDL_Texture;
@@ -50,6 +51,8 @@ public:
 	bool frcap;
 
 private:
+
+	DialogueSystem* dialogueSystem;
 
 	// Settings
 	Settings options;
