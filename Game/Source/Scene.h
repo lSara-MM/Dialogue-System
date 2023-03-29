@@ -4,13 +4,8 @@
 #include "App.h"
 
 #include "Module.h"
-
 #include "GuiButton.h"
-#include "GuiCheckBox.h"
-#include "GuiSliderBar.h"
-
 #include "DialogueSystem.h"
-#include "Settings.h"
 
 struct SDL_Texture;
 
@@ -43,9 +38,6 @@ public:
 
 	bool InitEntities();
 
-	// Settings
-	bool OnGuiMouseClickEvent(GuiControl* control);
-
 public:
 
 	bool frcap;
@@ -53,13 +45,6 @@ public:
 private:
 
 	DialogueSystem* dialogueSystem;
-
-	// Settings
-	Settings options;
-	Settings* pSettings = &options;
-
-	Pause pauseMenu;
-	Pause* pPause = &pauseMenu;
 
 	bool exit;
 };

@@ -15,6 +15,7 @@ DialogueSystem::~DialogueSystem()
 
 bool DialogueSystem::Start()
 {
+	LoadDialogue("dialogue.xml", 1);
 
 	return true;
 }
@@ -41,23 +42,25 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 {
 	LOG("Event by %d ", control->id);
 
-	app->audio->PlayFx(control->fxControl);
 
 	switch (control->id)
 	{
+	case -1:
+		LOG("Button Exit game click");
+		playerInput = -1;
+		//exit = true;
+		break;
 	case 1:
 		LOG("Button Close settings click");
-		
+		playerInput = 1;
 		break;
 	case 2:
 		LOG("Slider music click");
+		playerInput = 2;
 		break;
 	case 3:
 		LOG("Slider fx click");
-		break;
-	case 10:
-		LOG("Button Exit game click");
-		//exit = true;
+		playerInput = 3;
 		break;
 	}
 

@@ -97,9 +97,7 @@
   <ItemGroup>
     <ClCompile Include="Source\DialogueSystem.cpp" />
     <ClCompile Include="Source\GuiButton.cpp" />
-    <ClCompile Include="Source\GuiCheckBox.cpp" />
     <ClCompile Include="Source\GuiManager.cpp" />
-    <ClCompile Include="Source\GuiSliderBar.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Audio.cpp" />
@@ -114,10 +112,8 @@
     <ClInclude Include="Source\DialogueSystem.h" />
     <ClInclude Include="Source\DialogueTree.h" />
     <ClInclude Include="Source\GuiButton.h" />
-    <ClInclude Include="Source\GuiCheckBox.h" />
     <ClInclude Include="Source\GuiControl.h" />
     <ClInclude Include="Source\GuiManager.h" />
-    <ClInclude Include="Source\GuiSliderBar.h" />
     <ClInclude Include="Source\PerfTimer.h" />
     <ClInclude Include="Source\Queue.h" />
     <ClInclude Include="Source\Audio.h" />
@@ -126,7 +122,6 @@
     <ClInclude Include="Source\Module.h" />
     <ClInclude Include="Source\Render.h" />
     <ClInclude Include="Source\Scene.h" />
-    <ClInclude Include="Source\Settings.h" />
     <ClInclude Include="Source\Textures.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Window.h" />

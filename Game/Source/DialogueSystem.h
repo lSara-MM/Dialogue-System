@@ -12,6 +12,7 @@
 
 #include "List.h"
 #include <vector>
+
 using namespace std;
 
 class DialogueSystem : public Module
@@ -32,8 +33,10 @@ public:
 	bool LoadChoices(pugi::xml_node& text_node, DialogueNode* npc);
 
 private:
-	pugi::xml_document	dialogues;
+	pugi::xml_document dialogues;
+
 	int activeTreeID = 0;
+	int playerInput = 0;
 
 	DialogueNode* activeNode;
 	vector <DialogueTree*> treesList;

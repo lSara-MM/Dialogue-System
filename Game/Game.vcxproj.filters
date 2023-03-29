@@ -40,12 +40,6 @@
     <ClCompile Include="Source\GuiManager.cpp">
       <Filter>Modules\Core\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GuiCheckBox.cpp">
-      <Filter>Modules\Core\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GuiSliderBar.cpp">
-      <Filter>Modules\Core\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -119,15 +113,6 @@
     </ClInclude>
     <ClInclude Include="Source\GuiManager.h">
       <Filter>Modules\Core\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GuiCheckBox.h">
-      <Filter>Modules\Core\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GuiSliderBar.h">
-      <Filter>Modules\Core\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Settings.h">
-      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Scene.h">
       <Filter>Scenes</Filter>

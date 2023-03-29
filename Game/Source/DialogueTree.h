@@ -20,6 +20,7 @@ using namespace std;
 
 class DialogueChoice
 {
+public:
 	DialogueChoice() {};
 	DialogueChoice(SString text, int nextNode) {};
 	~DialogueChoice() {};
@@ -42,7 +43,7 @@ public:
 	vector <DialogueChoice*> choicesList;
 	vector <SString> answersList;
 	int nodeID;
-}; 
+};
 
 
 class DialogueTree

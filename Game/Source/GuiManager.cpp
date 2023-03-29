@@ -5,8 +5,6 @@
 #include "Textures.h"
 
 #include "GuiButton.h"
-#include "GuiCheckBox.h"
-#include "GuiSliderBar.h"
 
 GuiManager::GuiManager() :Module()
 {
@@ -20,7 +18,7 @@ bool GuiManager::Start()
 	return true;
 }
 
-GuiControl* GuiManager::CreateGuiControl(GuiControlType type, int id, const char* text, SDL_Rect bounds, int fontSize, Module* observer, ButtonType bType, SDL_Rect sliderBounds)
+GuiControl* GuiManager::CreateGuiControl(GuiControlType type, int id, const char* text, SDL_Rect bounds, int fontSize, Module* observer, SDL_Rect sliderBounds)
 {
 	GuiControl* guiControl = nullptr;
 
@@ -28,17 +26,15 @@ GuiControl* GuiManager::CreateGuiControl(GuiControlType type, int id, const char
 	switch (type)
 	{
 	case GuiControlType::BUTTON:
-		guiControl = (GuiControl*) new GuiButton(id, bounds, bType,  text, fontSize);
+		guiControl = (GuiControl*) new GuiButton(id, bounds,  text, fontSize);
 		break;
 	case GuiControlType::TOGGLE:
 		break;
 	case GuiControlType::CHECKBOX:
-		guiControl = (GuiControl*) new GuiCheckBox(id, bounds);
 		break;
 	case GuiControlType::SLIDER:
 		break;
 	case GuiControlType::SLIDERBAR:
-		guiControl = (GuiControl*) new GuiSliderBar(id, bounds, sliderBounds);
 		break;
 	case GuiControlType::COMBOBOX:
 		break;
@@ -56,9 +52,6 @@ GuiControl* GuiManager::CreateGuiControl(GuiControlType type, int id, const char
 
 	//Set the observer
 	guiControl->SetObserver(observer);
-
-	guiControl->fxPath = "Assets/Audio/Fx/sfx_button.wav";
-	guiControl->fxControl = app->audio->LoadFx(guiControl->fxPath);
 
 	// Created GuiControls are add it to the list of controls
 	guiControlsList.Add(guiControl);
