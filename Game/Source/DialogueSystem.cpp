@@ -22,17 +22,7 @@ bool DialogueSystem::Start()
 
 bool DialogueSystem::Update(float dt)
 {
-	if (activeNode) 
-	{
-		for (int i = 0; i < treesList[activeTreeID]->nodeList.size(); i++)
-		{
-			if (activeNode->choicesList[playerInput]->nextNode == treesList[activeTreeID]->nodeList[i]->nodeID)
-			{
-				activeNode = treesList[activeTreeID]->nodeList[i];
-				break;
-			}
-		}
-	}
+	
 
 	app->guiManager->Draw();
 	return true;
@@ -93,13 +83,14 @@ DialogueTree* DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 			 if (pugiNode.attribute("ID").as_int() == dialogueID)
 			 {
 				 tree->treeID = pugiNode.attribute("ID").as_int();
-				 LoadNodes(pugiNode, tree);
+				 LoadNodes(pugiNode);
 				 treesList.push_back(tree);
+				 tree->nodeList.push_back(LoadNodes(pugiNode));
 				 break;
 			 }
 			 else
 			 {
-				 pugiNode = pugiNode.next_sibling("Dialogue");
+				 pugiNode = pugiNode.next_sibling("dialogue");
 			 }
 		}
 	}
@@ -107,30 +98,32 @@ DialogueTree* DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 	return tree;
 }
 
-bool DialogueSystem::LoadNodes(pugi::xml_node& trees, DialogueTree* ptrTree)
+DialogueNode* DialogueSystem::LoadNodes(pugi::xml_node& trees)
 {
+	DialogueNode* node = new DialogueNode;
 	for (pugi::xml_node pugiNode = trees.child("node"); pugiNode != NULL; pugiNode = pugiNode.next_sibling("node"))
 	{
-		DialogueNode* node = new DialogueNode;
 		node->text = pugiNode.attribute("text").as_string();
 		node->nodeID = pugiNode.attribute("id").as_int();
-		LoadChoices(pugiNode, node);
-		ptrTree->nodeList.push_back(node);
+		node->choicesList.push_back(LoadChoices(pugiNode));
 	}
 
-	return true;
+	return node;
 }
 
-bool DialogueSystem::LoadChoices(pugi::xml_node& response, DialogueNode* answers)
+DialogueChoice* DialogueSystem::LoadChoices(pugi::xml_node& text_node)
 {
-	for (pugi::xml_node option = response.child("dialogue"); option != NULL; option = option.next_sibling("dialogue"))
+	DialogueChoice* option = new DialogueChoice;
+	for (pugi::xml_node choice = text_node.child("dialogue"); choice != NULL; choice = choice.next_sibling("dialogue"))
 	{
-		DialogueChoice* selection = new DialogueChoice;
+		/*DialogueChoice* selection = new DialogueChoice;
 		selection->text = option.attribute("option").as_string();
 		selection->nextNode = option.attribute("nextNode").as_int();
 		answers->choicesList.push_back(selection);
-		answers->answersList.push_back((option.attribute("option").as_string()));
+		answers->answersList.push_back((option.attribute("option").as_string()));*/
+
+
 	}
 
-	return true;
+	return option;
 }

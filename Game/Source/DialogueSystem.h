@@ -6,14 +6,63 @@
 #include "App.h"
 #include "GuiManager.h"
 #include "Module.h"
-
 #include "GuiButton.h"
-#include "DialogueTree.h"
 
 #include "List.h"
+#include "Log.h"
+#include "Point.h"
+#include "SString.h"
 #include <vector>
+#include <iostream>
 
 using namespace std;
+
+class DialogueChoice
+{
+public:
+	DialogueChoice() {};
+	DialogueChoice(SString text_, int nextNode_)
+	{
+		text = text_;
+		nextNode = nextNode_;
+	}
+	~DialogueChoice() {};
+
+public:
+	SString text;
+	int nextNode;
+};
+
+
+class DialogueNode
+{
+public:
+	DialogueNode() {};
+	DialogueNode(int id, SString text_)
+	{
+
+	}
+	~DialogueNode() {};
+
+public:
+	SString text;
+	vector <DialogueChoice*> choicesList;
+	vector <SString> answersList;
+	int nodeID;
+};
+
+
+class DialogueTree
+{
+public:
+	DialogueTree() {};
+	~DialogueTree() {};
+
+public:
+	int treeID;
+	vector <DialogueNode*> nodeList;
+};
+
 
 class DialogueSystem : public Module
 {
@@ -29,8 +78,8 @@ public:
 	void PerformDialogue(int treeId);
 
 	DialogueTree* LoadDialogue(const char* file, int dialogueID);
-	bool LoadNodes(pugi::xml_node& trees, DialogueTree* oak);
-	bool LoadChoices(pugi::xml_node& text_node, DialogueNode* npc);
+	DialogueNode* LoadNodes(pugi::xml_node& trees);
+	DialogueChoice* LoadChoices(pugi::xml_node& text_node);
 
 private:
 	pugi::xml_document dialogues;

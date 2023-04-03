@@ -120,9 +120,6 @@
     <ClInclude Include="Source\DialogueSystem.h">
       <Filter>Modules\Core\Dialogue</Filter>
     </ClInclude>
-    <ClInclude Include="Source\DialogueTree.h">
-      <Filter>Modules\Core\Dialogue</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Utils">
