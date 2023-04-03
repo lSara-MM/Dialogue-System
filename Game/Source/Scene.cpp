@@ -34,6 +34,8 @@ bool Scene::Awake(pugi::xml_node& config)
 
 bool Scene::Start()
 {
+	dialogueID = dialogueSystem->LoadDialogue("dialogue.xml", 1);
+
 	return true;
 }
 
@@ -44,6 +46,7 @@ bool Scene::PreUpdate()
 
 bool Scene::Update(float dt)
 {
+
 	return true;
 }
 

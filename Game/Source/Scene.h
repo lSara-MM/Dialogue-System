@@ -45,6 +45,7 @@ public:
 private:
 
 	DialogueSystem* dialogueSystem;
+	int dialogueID;
 
 	bool exit;
 };

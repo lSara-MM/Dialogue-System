@@ -6,7 +6,7 @@
 
 #include "GuiButton.h"
 
-GuiManager::GuiManager() :Module()
+GuiManager::GuiManager() : Module()
 {
 	name.Create("guiManager");
 }
