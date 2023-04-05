@@ -43,8 +43,6 @@ public:
 	bool frcap;
 
 private:
-
-	DialogueSystem* dialogueSystem;
 	int dialogueID;
 
 	bool exit;

@@ -55,9 +55,6 @@ bool Audio::Awake(pugi::xml_node& config)
 		ret = true;
 	}
 
-	volumeM = config.child("music").attribute("volume").as_int();
-	volumeF = config.child("fx").attribute("volume").as_int();
-
 	return ret;
 }
 
@@ -141,18 +138,6 @@ bool Audio::PlayMusic(const char* path, float fadeTime)
 	return ret;
 }
 
-bool Audio::PauseMusic()
-{
-	Mix_PauseMusic();
-	return true;
-}
-
-bool Audio::ResumeMusic()
-{
-	Mix_ResumeMusic();
-	return true;
-}
-
 // Load WAV
 unsigned int Audio::LoadFx(const char* path)
 {
@@ -193,30 +178,3 @@ bool Audio::PlayFx(unsigned int id, int repeat)
 
 	return ret;
 }
-
-bool Audio::ChangeMusicVolume(int vol)
-{
-	if (vol >= 0 && vol <= SDL_MIX_MAXVOLUME)
-	{
-		Mix_VolumeMusic(vol);
-		volumeM = vol;
-
-		return true;
-	}
-
-	return false;
-}
-
-bool Audio::ChangeFxVolume(int vol)
-{
-	if (vol >= 0 && vol <= SDL_MIX_MAXVOLUME)
-	{
-		Mix_Volume(-1, vol);
-		volumeF = vol;
-
-		return true;
-	}
-
-	return false;
-}
-

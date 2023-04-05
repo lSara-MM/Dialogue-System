@@ -26,21 +26,13 @@ public:
 	// Play a music file
 	bool PlayMusic(const char* path, float fadeTime = DEFAULT_MUSIC_FADE_TIME);
 
-	bool PauseMusic();
-	bool ResumeMusic();
-
 	// Load a WAV in memory
 	unsigned int LoadFx(const char* path);
 
 	// Play a previously loaded WAV
 	bool PlayFx(unsigned int fx, int repeat = 0);
 
-	bool ChangeMusicVolume(int vol);
-	bool ChangeFxVolume(int vol);
-
 public:
-	int volumeM, volumeF;
-
 private:
 
 	_Mix_Music* music;

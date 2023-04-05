@@ -25,15 +25,15 @@ public:
 
 	int LoadDialogue(const char* file, int dialogueID);
 	DialogueNode* LoadNodes(pugi::xml_node& xml_trees, DialogueTree* tree);
-	DialogueChoice* LoadChoices(pugi::xml_node& xml_node, DialogueNode* node);
+	void LoadChoices(pugi::xml_node& xml_node, DialogueNode* node);
 
 public:
 
-	int activeTreeID = 0;
+	//int activeTreeID = 0;
 	int playerInput = 0;
 
-	DialogueTree* activeTree;
-	vector <DialogueTree*> treesList;
+	//DialogueTree* activeTree;
+	vector <DialogueTree*> treeList;
 
 private:
 	pugi::xml_document dialogues;

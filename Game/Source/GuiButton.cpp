@@ -54,7 +54,6 @@ bool GuiButton::Update(float dt)
 bool GuiButton::Draw(Render* render)
 {
 	SDL_Rect rect = { 90, 0, 172, 40 };
-	int offsetX = 50; int offsetY = 10;
 
 	// Draw the right button depending on state
 	switch (state)
@@ -90,10 +89,10 @@ bool GuiButton::Draw(Render* render)
 	}
 
 	int size = fontSize;
-	int x = rect.w - text.Length() * size / 2 - offsetX;
-	int y = rect.h - size / 2 + offsetY;
+	int x = rect.w - text.Length() * size / 2;
+	int y = rect.h - size / 4;
 
-	app->render->TextDraw(text.GetString(), bounds.x + x / 4, bounds.y + y / 4, size);
+	app->render->TextDraw(text.GetString(), bounds.x, bounds.y, size);
 
 	return false;
 }

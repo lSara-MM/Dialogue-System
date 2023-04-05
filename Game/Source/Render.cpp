@@ -260,12 +260,12 @@ bool Render::TextDraw(const char* text, int x, int y, int size, SDL_Color color)
 {
 	bool ret = true;
 	//load a font into memory
-	ttf_font = TTF_OpenFont("Assets/Fonts/pcsenior.ttf", size);
+	ttf_font = TTF_OpenFont("Assets/Typo_Light.ttf", size);
 	
 	if (!ttf_font)
 	{
 		LOG("Cannot open font. TTF_OpenFont error: %s", TTF_GetError());
-		ret = false;
+		return false;
 	}
 
 	SDL_Color ttf_color;

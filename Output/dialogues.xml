@@ -11,7 +11,7 @@
 
 <!--1-->
     <node id="0" text="Hey there, traveler. Who are you and what brings you here?">
-        <choice option="My name is %s. I'm just seeking out new adventures." nextNode="1" eventReturn="2"/>
+        <choice option="My name is %%s. I'm just seeking out new adventures." nextNode="1" eventReturn="2"/>
     </node>
 
 <!--2/3/4-->

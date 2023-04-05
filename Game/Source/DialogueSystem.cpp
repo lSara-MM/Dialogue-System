@@ -15,18 +15,16 @@ DialogueSystem::~DialogueSystem()
 
 bool DialogueSystem::Start()
 {
-	LoadDialogue("dialogue.xml", 1);
-
 	return true;
 }
 
 bool DialogueSystem::Update(float dt)
 {
-	for (int i = 0; i < treesList.size(); i++)
+	for (int i = 0; i < treeList.size(); i++)
 	{
-		if (treesList[i]->active) { treesList[i]->UpdateTree(dt, this); }
+		if (treeList[i]->active) { treeList[i]->UpdateTree(dt, app->dialogueSystem); }
 	}
-	
+
 	app->guiManager->Draw();
 
 	return true;
@@ -64,13 +62,13 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 
 bool DialogueSystem::CleanUp()
 {
-	for (int i = 0; i < treesList.size(); i++)
+	for (int i = 0; i < treeList.size(); i++)
 	{
-		treesList[i]->CleanUp();
-		delete treesList[i];
+		treeList[i]->CleanUp();
+		delete treeList[i];
 	}
 
-	treesList.clear();
+	treeList.clear();
 
 	return true;
 }
@@ -80,7 +78,7 @@ int DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 {
 	pugi::xml_parse_result result = dialogues.load_file(file);
 
-	DialogueTree* tree = new DialogueTree;
+	DialogueTree* tree = new DialogueTree(false);
 
 	if (result == NULL)
 	{
@@ -89,17 +87,17 @@ int DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 	}
 	else
 	{
-		pugi::xml_node pugiNode = dialogues.first_child();
+		pugi::xml_node pugiNode = dialogues.first_child().first_child();
 
-		for (int i = 0; i < dialogueID && pugiNode != NULL; i++)
+		for (int i = 0; i <= dialogueID && pugiNode != NULL; i++)
 		{
 			 if (pugiNode.attribute("ID").as_int() == dialogueID)
 			 {
 				 tree->treeID = pugiNode.attribute("ID").as_int();
-				 treesList.push_back(tree);
-
-				 tree->activeNode = LoadNodes(pugiNode, tree);
-				 activeTree = tree;	 
+			
+				 tree->activeNode = LoadNodes(pugiNode, tree);	
+				 treeList.push_back(tree);
+				 //activeTree = tree;	 
 				 break;
 			 }
 			 else
@@ -113,13 +111,17 @@ int DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 
 DialogueNode* DialogueSystem::LoadNodes(pugi::xml_node& xml_trees, DialogueTree* tree)
 {
-	DialogueNode* node = new DialogueNode;
 	DialogueNode* first_node = new DialogueNode;
 
 	for (pugi::xml_node pugiNode = xml_trees.child("node"); pugiNode != NULL; pugiNode = pugiNode.next_sibling("node"))
 	{
-		node->text = pugiNode.attribute("text").as_string();
+		DialogueNode* node = new DialogueNode;
+
 		node->nodeID = pugiNode.attribute("id").as_int();
+		node->text = pugiNode.attribute("text").as_string();
+
+		LoadChoices(pugiNode, node);
+
 		tree->nodeList.push_back(node);
 
 		if (node->nodeID == 0) { first_node = node; }	// return the first node to set as the active one
@@ -128,17 +130,16 @@ DialogueNode* DialogueSystem::LoadNodes(pugi::xml_node& xml_trees, DialogueTree*
 	return first_node;
 }
 
-DialogueChoice* DialogueSystem::LoadChoices(pugi::xml_node& xml_node, DialogueNode* node)
+void DialogueSystem::LoadChoices(pugi::xml_node& xml_node, DialogueNode* node)
 {
-	DialogueChoice* option = new DialogueChoice;
-	for (pugi::xml_node choice = xml_node.child("dialogue"); choice != NULL; choice = choice.next_sibling("dialogue"))
+	for (pugi::xml_node choice = xml_node.child("choice"); choice != NULL; choice = choice.next_sibling("choice"))
 	{
-		option->text = choice.attribute("option").as_string();
+		DialogueChoice* option = new DialogueChoice;
 		option->nextNode = choice.attribute("nextNode").as_int();
+		option->text = choice.attribute("option").as_string();
+	
 		option->eventReturn = choice.attribute("eventReturn").as_int();
 
 		node->choicesList.push_back(option);
 	}
-
-	return option;
 }

@@ -34,8 +34,7 @@ bool Scene::Awake(pugi::xml_node& config)
 
 bool Scene::Start()
 {
-	dialogueID = dialogueSystem->LoadDialogue("dialogue.xml", 1);
-
+	dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 0);
 	return true;
 }
 
@@ -59,6 +58,9 @@ bool Scene::PostUpdate()
 	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 	
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		app->dialogueSystem->treeList[dialogueID]->active = true;
+
 	app->guiManager->Draw();
 
 	return ret;
