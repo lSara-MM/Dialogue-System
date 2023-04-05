@@ -54,7 +54,9 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 	fontSize = 24;
 	max_chars_line = fontSize * 3;
 
+
 	if (!activeNode->trimmed) { activeNode->SplitText(activeNode->text, fontSize, max_chars_line); }
+	if (!app->input->playerName.empty()) { activeNode->text.Substitute("%x", app->input->playerName.c_str()); }
 
 	size_t lines = activeNode->texts.size();
 	for (size_t i = 0; i < lines; i++)
@@ -93,7 +95,7 @@ bool DialogueTree::ChoiceInput(Module* mod, iPoint pos)
 {
 	for (int i = 0; i < activeNode->choicesList.size(); i++)
 	{
-		if (activeNode->choicesList[i]->eventReturn == 2)
+		if (activeNode->choicesList[i]->eventReturn == DIALOGUE_INPUT)
 		{
 			if (!app->input->getInput)
 			{
@@ -103,7 +105,7 @@ bool DialogueTree::ChoiceInput(Module* mod, iPoint pos)
 
 				if (app->input->nameEntered)
 				{
-					activeNode->choicesList[i]->text.Substitute("%s", app->input->playerName.c_str());	// Change %s for player's name - (const char* current word, const char* new word)
+					activeNode->choicesList[i]->text.Substitute("%x", app->input->playerName.c_str());	// Change %x for player's name - (const char* current word, const char* new word)
 					updateOptions = UpdateNodes(mod, pos, fontSize);
 				}
 			}

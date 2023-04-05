@@ -72,6 +72,23 @@ bool Scene::PostUpdate()
 		dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 0);
 	}
 
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
+	{
+		app->dialogueSystem->CleanUp();
+		dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 1);
+	}
+
+
+	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
+	{
+		app->SaveGameRequest();
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
+	{
+		app->LoadGameRequest();
+	}
+
 	return ret;
 }
 

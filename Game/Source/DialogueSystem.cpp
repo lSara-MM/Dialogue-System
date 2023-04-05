@@ -145,7 +145,7 @@ int DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 			 }
 			 else
 			 {
-				 pugiNode = pugiNode.next_sibling("dialogue");
+				 pugiNode = pugiNode.next_sibling("dialogueTree");
 			 }
 		}
 	}
@@ -185,4 +185,50 @@ void DialogueSystem::LoadChoices(pugi::xml_node& xml_node, DialogueNode* node)
 
 		node->choicesList.push_back(option);
 	}
+}
+
+bool DialogueSystem::LoadState(pugi::xml_node& data)
+{
+	app->input->playerName = data.child("player").attribute("player_name").as_string();
+	app->input->nameEntered = true;
+
+	for (size_t i = 0; i < activeTree->nodeList.size(); i++)
+	{
+		activeTree->nodeList[i]->nodeID = data.child("node").attribute("id").as_int();
+
+		for (int j = 0; j < activeTree->nodeList[i]->choicesList.size(); j++)
+		{
+			if (activeTree->nodeList[i]->choicesList[j]->eventReturn == 4)
+			{
+				activeTree->nodeList[i]->playerAnswer->text = data.child("node").attribute("answer").as_string();
+			}
+		}
+	}
+
+	return true;
+}
+
+
+bool DialogueSystem::SaveState(pugi::xml_node& data)
+{
+	pugi::xml_node player = data.append_child("player");
+
+	player.append_attribute("player_name") = app->input->playerName.c_str();
+	
+
+	for (size_t i = 0; i < activeTree->nodeList.size(); i++)
+	{
+		for (int j = 0; j < activeTree->nodeList[i]->choicesList.size(); j++)
+		{
+			if (activeTree->nodeList[i]->choicesList[j]->eventReturn == 3 && activeTree->nodeList[i]->playerAnswer != nullptr)
+			{
+				player = data.append_child("node");
+				player.append_attribute("id") = activeTree->nodeList[i]->nodeID;
+
+				player.append_attribute("answer") = activeTree->nodeList[i]->playerAnswer->text.GetString();
+			}
+		}
+	}
+
+	return true;
 }

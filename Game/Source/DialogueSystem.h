@@ -29,6 +29,9 @@ public:
 	DialogueNode* LoadNodes(pugi::xml_node& xml_trees, DialogueTree* tree);
 	void LoadChoices(pugi::xml_node& xml_node, DialogueNode* node);
 
+	bool LoadState(pugi::xml_node& data);
+	bool SaveState(pugi::xml_node& data);
+
 public:
 
 	//int activeTreeID = 0;

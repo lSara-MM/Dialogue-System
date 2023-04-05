@@ -196,12 +196,13 @@ void Input::HandleInput(SDL_Event event)
 	{
 		// Append the character
 		playerName.erase(playerName.length() - 1);
+
 		nameEntered = true;
 		getInput = false;
 	}
 
 	// Ignore shift
-	if ((event.key.keysym.sym == SDLK_LSHIFT))
+	if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
 	{
 		// Append the character
 		playerName.erase(playerName.length() - 1);

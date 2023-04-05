@@ -11,6 +11,10 @@
 #include "SString.h"
 #include <vector>
 
+#define DIALOGUE_INPUT 2
+#define DIALOGUE_SAVE 3
+#define DIALOGUE_IF 4
+
 using namespace std;
 
 class DialogueChoice
@@ -40,7 +44,7 @@ public:
 	SString text;
 	int nodeID;
 	vector <DialogueChoice*> choicesList;
-
+	DialogueChoice* playerAnswer;
 
 	bool trimmed = false;
 	vector<SString> texts;
