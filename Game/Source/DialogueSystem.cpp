@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Render.h"
 #include "Textures.h"
+#include "Window.h"
 
 DialogueSystem::DialogueSystem() : Module()
 {
@@ -13,19 +14,44 @@ DialogueSystem::~DialogueSystem()
 {
 }
 
+bool DialogueSystem::Awake(pugi::xml_node& config)
+{
+	LOG("Loading Dialogue System");
+	bool ret = true;
+	textBox_path = config.attribute("textBoxBg").as_string();
+
+	return ret;
+}
+
 bool DialogueSystem::Start()
 {
+	textBox_tex = app->tex->Load(textBox_path);
 	return true;
 }
 
 bool DialogueSystem::Update(float dt)
 {
-	for (int i = 0; i < treeList.size(); i++)
-	{
-		if (treeList[i]->active) { treeList[i]->UpdateTree(dt, app->dialogueSystem); }
-	}
+	//for (int i = 0; i < treeList.size(); i++)
+	//{
+	//	if (treeList[i]->active)
+	//	{
+	//		// Text box
+	//		iPoint pos = { 0, (app->win->GetHeight() - 353) };
+	//		app->render->DrawTexture(textBox_tex, pos.x, pos.y);
 
-	app->guiManager->Draw();
+	//		treeList[i]->UpdateTree(dt, app->dialogueSystem, pos);
+	//	}
+	//}
+
+	if (activeTree != nullptr)
+	{
+		//Text box
+		iPoint pos = { 0, (app->win->GetHeight() - 353) };
+		app->render->DrawTexture(textBox_tex, pos.x, pos.y);
+
+		activeTree->UpdateTree(dt, app->dialogueSystem, pos);
+		app->guiManager->Draw();
+	}
 
 	return true;
 }
@@ -34,41 +60,58 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 {
 	LOG("Event by %d ", control->id);
 
-
 	switch (control->id)
 	{
-	case -1:
-		LOG("Button Exit game click");
-		//playerInput = -1;
-		//exit = true;
-		break;
 	case 0:
-		LOG("Button Close settings click");
-		playerInput = 0;
+		LOG("Option 1 click");
+		playerInput = activeTree->activeNode->choicesList[0]->nextNode;
 		break;
 
 	case 1:
-		LOG("Button Close settings click");
-		playerInput = 1;
+		LOG("Option 2 click");
+		playerInput = activeTree->activeNode->choicesList[1]->nextNode;
 		break;
 	case 2:
-		LOG("Slider music click");
-		playerInput = 2;
+		LOG("Option 3 click");
+		playerInput = activeTree->activeNode->choicesList[2]->nextNode;
 		break;
 	}
+
+	if (playerInput != -1)
+	{
+		activeTree->activeNode = activeTree->nodeList[playerInput];
+		activeTree->updateOptions = false;
+	} 
+	else
+	{
+		activeTree->activeNode = activeTree->nodeList.at(activeTree->nodeList.size() - 1);
+	}
+	
+	app->guiManager->CleanUp();
 
 	return true;
 }
 
 bool DialogueSystem::CleanUp()
 {
-	for (int i = 0; i < treeList.size(); i++)
+	//for (int i = 0; i < treeList.size(); i++)
+	//{
+	//	treeList[i]->CleanUp();
+	//	delete treeList[i];
+	//}
+
+	//treeList.clear();
+
+	if (activeTree != nullptr)
 	{
-		treeList[i]->CleanUp();
-		delete treeList[i];
+		activeTree->CleanUp();
 	}
 
-	treeList.clear();
+	app->input->getInput = false;
+	app->input->nameEntered = false;
+	app->input->playerName.clear();
+
+	app->guiManager->CleanUp();
 
 	return true;
 }
@@ -96,8 +139,8 @@ int DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 				 tree->treeID = pugiNode.attribute("ID").as_int();
 			
 				 tree->activeNode = LoadNodes(pugiNode, tree);	
-				 treeList.push_back(tree);
-				 //activeTree = tree;	 
+				 //treeList.push_back(tree);
+				 activeTree = tree;	 
 				 break;
 			 }
 			 else

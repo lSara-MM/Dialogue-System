@@ -34,7 +34,7 @@ bool Scene::Awake(pugi::xml_node& config)
 
 bool Scene::Start()
 {
-	dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 0);
+	//dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 0);
 	return true;
 }
 
@@ -58,10 +58,19 @@ bool Scene::PostUpdate()
 	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 	
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-		app->dialogueSystem->treeList[dialogueID]->active = true;
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && app->dialogueSystem->activeTree == nullptr)
+	{
+		// Que es millor, carregar-ho abans i activar-ho a quan x event o carregar-ho quan sigui necessari?
+		dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 0);
+		//app->dialogueSystem->treeList[dialogueID]->active = true;
+	}
 
-	app->guiManager->Draw();
+
+	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	{
+		app->dialogueSystem->CleanUp();
+		dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 0);
+	}
 
 	return ret;
 }

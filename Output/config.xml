@@ -11,7 +11,7 @@
 	</renderer>
 
 	<window>
-		<resolution width="1024" height="767" scale="2"/>
+		<resolution width="1024" height="767" scale="1"/>
 		<fullscreen value="false"/>
 		<borderless value="false"/>
 		<resizable value="false"/>
@@ -26,6 +26,10 @@
 	
 	<scene>
 	</scene>
+
+	<dialogue textBoxBg="Assets/textBox.png"></dialogue>
+
+	
 	
 
 </config>

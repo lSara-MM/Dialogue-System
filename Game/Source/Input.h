@@ -2,10 +2,15 @@
 #define __INPUT_H__
 
 #include "Module.h"
+#include "SDL/include/SDL.h"
 
 //#define NUM_KEYS 352
 #define NUM_MOUSE_BUTTONS 5
 //#define LAST_KEYS_PRESSED_BUFFER 50
+
+#define MAX_CHARS 10
+
+using namespace std;
 
 struct SDL_Rect;
 
@@ -65,8 +70,13 @@ public:
 	void GetMousePosition(int &x, int &y);
 	void GetMouseMotion(int& x, int& y);
 
+	void HandleInput(SDL_Event event);
+
 public:
-	bool godMode;
+	string playerName;
+	bool nameEntered = false;
+	bool getInput = false;
+
 private:
 	bool windowEvents[WE_COUNT];
 	KeyState*	keyboard;

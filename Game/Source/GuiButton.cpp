@@ -53,34 +53,31 @@ bool GuiButton::Update(float dt)
 
 bool GuiButton::Draw(Render* render)
 {
-	SDL_Rect rect = { 90, 0, 172, 40 };
-
 	// Draw the right button depending on state
 	switch (state)
 	{
 
 	case GuiControlState::DISABLED:
 	{
-		render->DrawRectangle({ bounds.x * 2, bounds.y * 2, bounds.w * 2, bounds.h * 2 }, 200, 200, 200, 255, true, false);
+		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 200, 200, 200, 255, true, false);
 
 	} break;
 
 	case GuiControlState::NORMAL:
 	{
-		render->DrawRectangle({ bounds.x * 2, bounds.y * 2, bounds.w * 2, bounds.h * 2 }, 0, 0, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 0, 128, 255, 255, true, false);
 
 	}	break;
 
 	case GuiControlState::FOCUSED:
 	{
-		render->DrawRectangle({ bounds.x * 2, bounds.y * 2, bounds.w * 2, bounds.h * 2 }, 255, 0, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 255, 0, 255, 255, true, false);
 
 	} break;
 
 	case GuiControlState::PRESSED:
 	{
-		render->DrawRectangle({ bounds.x * 2, bounds.y * 2, bounds.w * 2, bounds.h * 2 }, 0, 255, 0, 255, true, false);
-		//rect = { 343, 0, 210, 80 };
+		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 0, 255, 0, 255, true, false);
 
 	} break;
 
@@ -89,10 +86,10 @@ bool GuiButton::Draw(Render* render)
 	}
 
 	int size = fontSize;
-	int x = rect.w - text.Length() * size / 2;
-	int y = rect.h - size / 4;
+	int x = bounds.w / size * 0.5;
+	int y = bounds.h - size / 4;
 
-	app->render->TextDraw(text.GetString(), bounds.x, bounds.y, size);
+	app->render->TextDraw(text.GetString(), bounds.x + x, bounds.y, size);
 
 	return false;
 }

@@ -6,6 +6,12 @@
 2 - input
 -->
 
+<!--
+  IMPORTANT. Some special characters may crash the game
+  Ex. % -> use %% (it will only show 1 %)
+  https://stackoverflow.com/questions/45328047/how-can-i-avoiding-crashing-at-vsprintf-s-while-printing-character-similar-to
+-->
+
 <dialogues>
   <dialogueTree ID="0">
 
@@ -16,26 +22,26 @@
 
 <!--2/3/4-->
     <node id="1" text="Ah, I see. Well, I do have a quest for you if you're interested. There's a dangerous beast lurking around here, and it's been attacking my livestock. Would you be willing to hunt it down for me?">
-        <choice option="Sounds dangerous, but I'm up for the challenge. Do you have any information on the beast's whereabouts or weaknesses?" nextNode="2"  eventReturn="1"/>
+        <choice option="Sounds dangerous, but I'm up for the challenge. Do you have any information?" nextNode="2"  eventReturn="1"/>
         <choice option="What's in it for me?" nextNode="3"  eventReturn="1"/>
         <choice option="I don't think I'm ready for something like that yet." nextNode="4"  eventReturn="1"/>
     </node>
 
 <!--5-->
     <node id="2" text="It tends to roam around the nearby forest at night but I have no clue about its weak points.">
-        <choice option="Thanks for the information. Anything else I should know?" nextNode="5" eventReturn="1"/>
+        <choice option="Thanks for the information. Anything else I should know?" nextNode="6" eventReturn="1"/>
     </node>
     
 <!--5/4/6-->
     <node id="3" text="Well, I can offer you 100 gold coins.">
-      <choice option="Deal." nextNode="5" eventReturn="2"/>
+      <choice option="Deal." nextNode="5" eventReturn="1"/>
       <choice option="Only? Don't waste my time!" nextNode="4" eventReturn="1"/>
-      <choice option="Hmm, and how's that beast?" nextNode="6" eventReturn="1"/>
+      <choice option="Hmm, just to double-check, how's that beast?" nextNode="2" eventReturn="1"/>
     </node>
 
 <!--(-1)-->
     <node id="4" text="That's understandable. It's not for everyone. Have a safe journey ahead!">
-      <choice option="Goodbye." nextNode="-1" eventReturn="1"/>
+      <choice option="Goodbye. " nextNode="-1" eventReturn="1"/>
     </node>
 
     <node id="5" text="Good luck out there, and be careful!">
@@ -43,12 +49,13 @@
     </node>
 
     <node id="6" text="There have been rumors that the beast is being controlled by someone. If that's true, you'll need to be extra cautious.">
-        <choice option="Got it. I'll keep my guard up. Thanks for the warning. I'll be on my way now." nextNode="-1" eventReturn="1"/>
+        <choice option="Got it. I'll keep my guard up. I'll be on my way now." nextNode="-1" eventReturn="1"/>
+        <!--<choice option="Okay. Will I get anything for this?." nextNode="3" eventReturn="1"/>-->
     </node>
 
     
 
-    <node id="-1" text ="End of conversation R to talk again"></node>
+    <node id="-1" text ="End of conversation -F1- to talk again"></node>
   </dialogueTree>
 
   <dialogueTree ID="1">

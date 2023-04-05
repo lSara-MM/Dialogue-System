@@ -16,6 +16,8 @@ public:
 	DialogueSystem();
 	~DialogueSystem();
 
+	// Called before render is available
+	bool Awake(pugi::xml_node& config);
 	bool Start();
 	bool Update(float dt);
 	bool OnGuiMouseClickEvent(GuiControl* control);
@@ -32,9 +34,11 @@ public:
 	//int activeTreeID = 0;
 	int playerInput = 0;
 
-	//DialogueTree* activeTree;
-	vector <DialogueTree*> treeList;
+	DialogueTree* activeTree;
+	//vector <DialogueTree*> treeList;
 
+	SDL_Texture* textBox_tex;
+	const char* textBox_path;
 private:
 	pugi::xml_document dialogues;
 };

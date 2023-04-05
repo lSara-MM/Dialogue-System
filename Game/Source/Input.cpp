@@ -43,7 +43,9 @@ bool Input::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Input::Start()
 {
-	godMode = false;
+	//Enable Unicode
+	//SDL_EnableUNICODE(SDL_ENABLE);
+
 	SDL_StopTextInput();
 	return true;
 }
@@ -110,6 +112,11 @@ bool Input::PreUpdate()
 				}
 			break;
 
+			// TODO: Handle input
+			case SDL_KEYDOWN:
+				if (getInput) { HandleInput(event); }
+				break;
+
 			case SDL_MOUSEBUTTONDOWN:
 				mouseButtons[event.button.button - 1] = KEY_DOWN;
 				//LOG("Mouse button %d down", event.button.button-1);
@@ -129,6 +136,7 @@ bool Input::PreUpdate()
 				//LOG("Mouse motion x %d y %d", mouse_motion_x, mouse_motion_y);
 			break;
 		}
+
 	}
 
 	return true;
@@ -139,6 +147,9 @@ bool Input::CleanUp()
 {
 	LOG("Quitting SDL event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+
+	//Disable Unicode
+	//SDL_EnableUNICODE(SDL_DISABLE);
 	return true;
 }
 
@@ -158,4 +169,41 @@ void Input::GetMouseMotion(int& x, int& y)
 {
 	x = mouseMotionX;
 	y = mouseMotionY;
+}
+
+
+void Input::HandleInput(SDL_Event event)
+{
+	// Keep a copy of the current version of the string
+	string temp = playerName;
+
+	// If the string less than maximum size
+	if (playerName.length() <= MAX_CHARS)
+	{
+		//Append the character
+		playerName += (char)event.key.keysym.sym;
+	}
+
+	// If backspace was pressed and the string isn't blank
+	if ((event.key.keysym.sym == SDLK_BACKSPACE) && !playerName.empty())
+	{
+		// Remove a character from the end
+		playerName.erase(playerName.length() - 1);
+		playerName.erase(playerName.length() - 1);
+	}
+
+	if ((event.key.keysym.sym == SDLK_RETURN) && !playerName.empty())
+	{
+		// Append the character
+		playerName.erase(playerName.length() - 1);
+		nameEntered = true;
+		getInput = false;
+	}
+
+	// Ignore shift
+	if ((event.key.keysym.sym == SDLK_LSHIFT))
+	{
+		// Append the character
+		playerName.erase(playerName.length() - 1);
+	}
 }
