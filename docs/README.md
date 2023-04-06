@@ -41,15 +41,17 @@ Despite that, there are some games that use an evolved version whither the playe
 
 **Examples**:
 
-| Fallout series | Detroit: Become Human (2018) |
-| --- | ----------- |
-| ![Fallout series](https://external-preview.redd.it/f8P_i_fMd-mPtdVyRiFMKOy88ciPVew4CGU9YmJ_W7s.jpg?width=640&crop=smart&auto=webp&s=51194a7f6424204858a10b688b1b05565caa826f) | ![Detroit: Become Human (2018)](https://i.redd.it/k9tj3vqm4hi31.png)|
+| Fallout series | Mass Effect |
+| ----------- | ----------- |
+| ![Fallout series](https://external-preview.redd.it/f8P_i_fMd-mPtdVyRiFMKOy88ciPVew4CGU9YmJ_W7s.jpg?width=640&crop=smart&auto=webp&s=51194a7f6424204858a10b688b1b05565caa826f) | ![Mass Effect 2007](http://cdn3.whatculture.com/wp-content/uploads/2015/11/3ehM1gNO.gif)|
+
+| Detroit: Become Human (2018) |  |
+| ----------- | ----------- |
+| ![Detroit: Become Human (2018)](https://i.redd.it/k9tj3vqm4hi31.png) | ![Detroit: Become Human (Choices Tree)](https://www.kotaku.com.au/wp-content/uploads/sites/3/2018/04/detroit-become-human-2.jpg?quality=80&w=1280)|
 			
 
 ### 2.3. Hub-and-Spokes
-In this system the conversation is presented in a “hub” in which the NPC delivers its lines and the player's choices will eventually return them to the main hub. This means they can explore the dialogue in any order they wish and as many times they want.
-
-There might be hidden “subhubs” within specific responses but players can access them repeatedly by selecting a dialogue option from the main “hub”.  
+In a hub-and-spoke format, the player selects conversation options from a central "hub." Upon selection, the conversation branches out into a series of unique lines and additional response options, until that particular branch has been fully explored. The player then returns to the hub and can select a different option to explore another branch.  
 
 **Example**:
 
