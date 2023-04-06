@@ -24,6 +24,7 @@ public:
 	~DialogueChoice() {};
 
 public:
+	int choiceID;
 	SString text;
 	int nextNode;
 	int eventReturn;
@@ -44,7 +45,7 @@ public:
 	SString text;
 	int nodeID;
 	vector <DialogueChoice*> choicesList;
-	DialogueChoice* playerAnswer;
+	int playerAnswer = -1;
 
 	bool trimmed = false;
 	vector<SString> texts;
@@ -60,7 +61,7 @@ public:
 
 	bool UpdateTree(float dt, Module* mod, iPoint pos);
 	bool UpdateNodes(Module* mod, iPoint pos, int fontSize);
-	bool ChoiceInput(Module* mod, iPoint pos);
+	bool EventReturn(Module* mod, iPoint pos);
 	void CleanUp();
 
 public:

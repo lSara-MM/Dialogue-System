@@ -2,6 +2,8 @@
 #include "Input.h"
 #include "Window.h"
 
+#include "DialogueSystem.h"
+
 #include "Defs.h"
 #include "Log.h"
 
@@ -174,6 +176,8 @@ void Input::GetMouseMotion(int& x, int& y)
 
 void Input::HandleInput(SDL_Event event)
 {
+	// TODO: GET AND PROCESS USER'S INPUT 
+
 	// Keep a copy of the current version of the string
 	string temp = playerName;
 
@@ -194,9 +198,8 @@ void Input::HandleInput(SDL_Event event)
 
 	if ((event.key.keysym.sym == SDLK_RETURN) && !playerName.empty())
 	{
-		// Append the character
 		playerName.erase(playerName.length() - 1);
-
+		app->dialogueSystem->SaveDialogueState();
 		nameEntered = true;
 		getInput = false;
 	}

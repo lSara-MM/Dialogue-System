@@ -29,13 +29,14 @@ public:
 	DialogueNode* LoadNodes(pugi::xml_node& xml_trees, DialogueTree* tree);
 	void LoadChoices(pugi::xml_node& xml_node, DialogueNode* node);
 
-	bool LoadState(pugi::xml_node& data);
-	bool SaveState(pugi::xml_node& data);
+	bool LoadDialogueState();
+	bool SaveDialogueState();
+
+	friend DialogueTree;
 
 public:
 
-	//int activeTreeID = 0;
-	int playerInput = 0;
+	DialogueChoice* playerInput;
 
 	DialogueTree* activeTree;
 	//vector <DialogueTree*> treeList;

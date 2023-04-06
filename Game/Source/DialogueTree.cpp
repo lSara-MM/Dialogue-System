@@ -55,8 +55,15 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 	max_chars_line = fontSize * 3;
 
 
-	if (!activeNode->trimmed) { activeNode->SplitText(activeNode->text, fontSize, max_chars_line); }
-	if (!app->input->playerName.empty()) { activeNode->text.Substitute("%x", app->input->playerName.c_str()); }
+	if (!app->input->playerName.empty())
+	{
+		activeNode->text.Substitute("%x", app->input->playerName.c_str());
+	}
+
+	if (!activeNode->trimmed)
+	{
+		activeNode->SplitText(activeNode->text, fontSize, max_chars_line);
+	}
 
 	size_t lines = activeNode->texts.size();
 	for (size_t i = 0; i < lines; i++)
@@ -64,10 +71,12 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 		app->render->TextDraw(activeNode->texts[i].GetString(), pos.x + 100, pos.y + 20 + 50 * i, fontSize, { 255, 255, 255 });
 	}
 
+	EventReturn(mod, pos);
 
-	ChoiceInput(mod, pos);
-
-	if (!updateOptions) { updateOptions = UpdateNodes(mod, pos, fontSize); }
+	if (!updateOptions)
+	{
+		updateOptions = UpdateNodes(mod, pos, fontSize);
+	}
 
 	return true;
 }
@@ -91,12 +100,14 @@ bool DialogueTree::UpdateNodes(Module* mod, iPoint pos, int fontSize)
 	return true;
 }
 
-bool DialogueTree::ChoiceInput(Module* mod, iPoint pos)
+bool DialogueTree::EventReturn(Module* mod, iPoint pos)
 {
 	for (int i = 0; i < activeNode->choicesList.size(); i++)
 	{
-		if (activeNode->choicesList[i]->eventReturn == DIALOGUE_INPUT)
+		switch (activeNode->choicesList[i]->eventReturn)
 		{
+		case DIALOGUE_INPUT:
+
 			if (!app->input->getInput)
 			{
 				// Get player's input
@@ -116,10 +127,19 @@ bool DialogueTree::ChoiceInput(Module* mod, iPoint pos)
 				const char* ch_name = app->input->playerName.c_str();	// SString to const char*	
 				app->render->TextDraw(ch_name, app->win->GetWidth() / 3 + fontSize * 7, 100, fontSize, { 255, 255, 255 });
 			}
-		}
-		else
-		{
+
+			break;
+
+		case DIALOGUE_SAVE:
+			// see on DialogueSystem::OnGuiMouseClickEvent();
+			break;
+		case DIALOGUE_IF:
+
+
+			break;
+		default:
 			return false;
+			break;
 		}
 	}
 
@@ -133,5 +153,6 @@ void DialogueTree::CleanUp()
 		nodeList[j]->CleanUp();
 		delete nodeList[j];
 	}
+	
 	nodeList.clear();
 }

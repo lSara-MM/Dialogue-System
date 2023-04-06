@@ -60,31 +60,24 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 {
 	LOG("Event by %d ", control->id);
 
-	switch (control->id)
-	{
-	case 0:
-		LOG("Option 1 click");
-		playerInput = activeTree->activeNode->choicesList[0]->nextNode;
-		break;
+	playerInput = activeTree->activeNode->choicesList[control->id];
 
-	case 1:
-		LOG("Option 2 click");
-		playerInput = activeTree->activeNode->choicesList[1]->nextNode;
-		break;
-	case 2:
-		LOG("Option 3 click");
-		playerInput = activeTree->activeNode->choicesList[2]->nextNode;
-		break;
+	if (playerInput->eventReturn == DIALOGUE_SAVE)
+	{
+		activeTree->activeNode->playerAnswer = control->id;
+		SaveDialogueState();
 	}
 
-	if (playerInput != -1)
+	// Check if last node
+	if (playerInput->nextNode != -1)
 	{
-		activeTree->activeNode = activeTree->nodeList[playerInput];
+		activeTree->activeNode = activeTree->nodeList[playerInput->nextNode];
 		activeTree->updateOptions = false;
 	} 
 	else
 	{
 		activeTree->activeNode = activeTree->nodeList.at(activeTree->nodeList.size() - 1);
+		// CleanUp();
 	}
 	
 	app->guiManager->CleanUp();
@@ -104,7 +97,9 @@ bool DialogueSystem::CleanUp()
 
 	if (activeTree != nullptr)
 	{
-		activeTree->CleanUp();
+		activeTree->nodeList.clear();
+		delete activeTree;
+		activeTree = nullptr;
 	}
 
 	app->input->getInput = false;
@@ -187,48 +182,74 @@ void DialogueSystem::LoadChoices(pugi::xml_node& xml_node, DialogueNode* node)
 	}
 }
 
-bool DialogueSystem::LoadState(pugi::xml_node& data)
+
+bool DialogueSystem::LoadDialogueState()
 {
-	app->input->playerName = data.child("player").attribute("player_name").as_string();
-	app->input->nameEntered = true;
+	pugi::xml_document gameStateFile;
+	pugi::xml_parse_result result = gameStateFile.load_file("save_dialogue.xml");
+	pugi::xml_node node = gameStateFile.child("save_choices");
+	
+	bool ret = true;
 
-	for (size_t i = 0; i < activeTree->nodeList.size(); i++)
+	if (result == NULL)
 	{
-		activeTree->nodeList[i]->nodeID = data.child("node").attribute("id").as_int();
+		LOG("Could not load xml file save_dialogue.xml. pugi error: %s", result.description());
+		ret = false;
+	}
+	else
+	{
+		string temp = node.child("player").attribute("player_name").as_string();
+		app->input->playerName = temp.c_str();
+		app->input->nameEntered = true;
 
-		for (int j = 0; j < activeTree->nodeList[i]->choicesList.size(); j++)
+		for (size_t i = 0; i < activeTree->nodeList.size() && !node.child("node").empty(); i++)
 		{
-			if (activeTree->nodeList[i]->choicesList[j]->eventReturn == 4)
+			for (int j = 0; j < activeTree->nodeList[i]->choicesList.size(); j++)
 			{
-				activeTree->nodeList[i]->playerAnswer->text = data.child("node").attribute("answer").as_string();
+				if (activeTree->nodeList[i]->choicesList[j]->eventReturn == 3)
+				{
+					activeTree->nodeList[i]->nodeID = node.child("node").attribute("id").as_int();
+					activeTree->nodeList[i]->playerAnswer = node.child("node").attribute("answer").as_int();
+				}
 			}
 		}
 	}
 
-	return true;
+	return ret;
 }
 
 
-bool DialogueSystem::SaveState(pugi::xml_node& data)
+bool DialogueSystem::SaveDialogueState()
 {
-	pugi::xml_node player = data.append_child("player");
+	bool ret = true;
 
+	pugi::xml_document* saveDoc = new pugi::xml_document();
+	pugi::xml_node node = saveDoc->append_child("save_choices");
+
+
+	pugi::xml_node player = node.append_child("player");
+
+	// save player's name
+	//app->input->playerName.erase(app->input->playerName.length() - 1);	// idk why a '<' character is added to the document, use this function to delete it
 	player.append_attribute("player_name") = app->input->playerName.c_str();
-	
 
+	// save important choices
 	for (size_t i = 0; i < activeTree->nodeList.size(); i++)
 	{
 		for (int j = 0; j < activeTree->nodeList[i]->choicesList.size(); j++)
 		{
-			if (activeTree->nodeList[i]->choicesList[j]->eventReturn == 3 && activeTree->nodeList[i]->playerAnswer != nullptr)
+			if (activeTree->nodeList[i]->playerAnswer > -1 && activeTree->nodeList[i]->choicesList[j]->eventReturn == 3)
 			{
-				player = data.append_child("node");
+				player = node.append_child("node");
 				player.append_attribute("id") = activeTree->nodeList[i]->nodeID;
-
-				player.append_attribute("answer") = activeTree->nodeList[i]->playerAnswer->text.GetString();
+				player.append_attribute("answer") = activeTree->nodeList[i]->playerAnswer;
+				player.append_attribute("text") = activeTree->nodeList[i]->choicesList[activeTree->nodeList[i]->playerAnswer]->text.GetString();
+				break;
 			}
 		}
 	}
 
-	return true;
+	ret = saveDoc->save_file("save_dialogue.xml");
+
+	return ret;
 }
