@@ -53,10 +53,12 @@ Despite that, there are some games that use an evolved version whither the playe
 ### 2.3. Hub-and-Spokes
 In a hub-and-spoke format, the player selects conversation options from a central "hub." Upon selection, the conversation branches out into a series of unique lines and additional response options, until that particular branch has been fully explored. The player then returns to the hub and can select a different option to explore another branch.  
 
-**Example**:
+**Examples**:
 
-![The Elder Scrolls V: Skyrim (2011)](https://www.playthepast.org/wp-content/uploads/2022/02/D_dialogue_I-dont-care-if-you-wrote-it-yourself.jpg)
-The Elder Scrolls V: Skyrim (2011) {the academic library}
+| Undertale (2015) | The Elder Scrolls V: Skyrim (2011) |
+| ----------- | ----------- |
+| ![Undertale (2015)](https://i.pinimg.com/originals/fa/0a/fb/fa0afbd0f7d9ec29299b49fa747be4c0.gif) | ![The Elder Scrolls V: Skyrim (2011)](https://www.playthepast.org/wp-content/uploads/2022/02/D_dialogue_I-dont-care-if-you-wrote-it-yourself.jpg)|
+
 
 ### 2.4. Parser-Driven
 This method is relatively rare today as the NPC responses aren’t automated and the NPC may ignore or reply something out of context which will break the illusion of a real conversation. 
