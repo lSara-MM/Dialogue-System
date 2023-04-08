@@ -13,20 +13,17 @@ void DialogueNode::SplitText(SString text_, int fontSize_, int max_chars_line_)
 
 	if (text_.Length() > max_chars_line_)
 	{
-		int i, startIndex = 0;
-		for (int j = 0; j <= line.length() / max_chars_line_; j++)
+		int a, b, startIndex = 0;
+		for (int j = 0; j <= line.length() / max_chars_line_; j++)	// <= -> in case of decimal, get the round up number 
 		{
-			i = max_chars_line_ + startIndex;
-			int x = line.find_first_of(" ", i);
+			a = max_chars_line_ + startIndex;
+			b = line.find_first_of(" ", a);	// find first " " (space) from last trimmed to the end. 
 
 			// If we reached the end of the word or the end of the input.
-			if (line[x])
-			{
-				string temp;
-				temp.append(line, startIndex, x);
-				texts.push_back(temp.c_str());
-				startIndex = i;
-			}
+			string temp;
+			temp.append(line, startIndex, b - startIndex);	// string text to append, int index start, int size of text to append
+			texts.push_back(temp.c_str());
+			startIndex = b;
 		}
 	}
 	else

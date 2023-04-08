@@ -34,7 +34,7 @@
     <node id="3" text="Well, I can offer you 100 gold coins.">
       <choice id="0" option="Deal." nextNode="5" eventReturn="1"/>
       <choice id="1" option="Only? Don't waste my time!" nextNode="4" eventReturn="1"/>
-      <choice id="2" option="Hmm, and how's that beast?" nextNode="3" eventReturn="1"/>
+      <choice id="2" option="Hmm, and how's that beast?" nextNode="2" eventReturn="1"/>
     </node>
 
     <node id="4" text="That's understandable. It's not for everyone. Have a safe journey ahead!">

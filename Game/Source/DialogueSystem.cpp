@@ -230,7 +230,6 @@ bool DialogueSystem::SaveDialogueState()
 	pugi::xml_node player = node.append_child("player");
 
 	// save player's name
-	//app->input->playerName.erase(app->input->playerName.length() - 1);	// idk why a '<' character is added to the document, use this function to delete it
 	player.append_attribute("player_name") = app->input->playerName.c_str();
 
 	// save important choices
