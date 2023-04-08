@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!--eventReturn
+<!-- eventReturn index
 0 - no choice
 1 - choice(s)
 2 - input
@@ -12,6 +12,10 @@
   IMPORTANT. Some special characters may crash the game
   Ex. % -> use %% (it will only show 1 %)
   https://stackoverflow.com/questions/45328047/how-can-i-avoiding-crashing-at-vsprintf-s-while-printing-character-similar-to
+-->
+
+<!--
+  IMPORTANT 2. IDs must be in order.
 -->
 
 <dialogues>

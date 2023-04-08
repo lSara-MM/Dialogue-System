@@ -114,7 +114,6 @@ bool Input::PreUpdate()
 				}
 			break;
 
-			// TODO: Handle input
 			case SDL_KEYDOWN:
 				if (getInput) { HandleInput(event); }
 				break;
@@ -176,8 +175,6 @@ void Input::GetMouseMotion(int& x, int& y)
 
 void Input::HandleInput(SDL_Event event)
 {
-	// TODO: GET AND PROCESS USER'S INPUT 
-
 	// Keep a copy of the current version of the string
 	string temp = playerName;
 

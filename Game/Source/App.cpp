@@ -33,7 +33,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	
 	scene = new Scene();
 
-	// Ordered for awake / Start / Ubdate
+	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
 	AddModule(input);
 	AddModule(win);

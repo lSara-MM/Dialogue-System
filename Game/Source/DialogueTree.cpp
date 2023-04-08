@@ -11,6 +11,7 @@ void DialogueNode::SplitText(SString text_, int fontSize_, int max_chars_line_)
 {
 	string line = text_.GetString();
 
+	// TODO: adapt text to the text box
 	if (text_.Length() > max_chars_line_)
 	{
 		int a, b, startIndex = 0;
@@ -34,12 +35,6 @@ void DialogueNode::SplitText(SString text_, int fontSize_, int max_chars_line_)
 	trimmed = true;
 }
 
-void DialogueNode::CleanUp()
-{
-	for (int j = 0; j < choicesList.size(); j++) { delete choicesList[j]; }
-	choicesList.clear();
-}
-
 
 DialogueTree::DialogueTree(bool a)
 {
@@ -51,7 +46,7 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 	fontSize = 24;
 	max_chars_line = fontSize * 3;
 
-
+	// TODO: Substitute player's name in text and choices if needed
 	if (!app->input->playerName.empty())
 	{
 		activeNode->text.Substitute("%x", app->input->playerName.c_str());
@@ -62,6 +57,7 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 		activeNode->SplitText(activeNode->text, fontSize, max_chars_line);
 	}
 
+	// TODO: Render dialogue in text box
 	size_t lines = activeNode->texts.size();
 	for (size_t i = 0; i < lines; i++)
 	{
@@ -72,16 +68,17 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 
 	if (!updateOptions)
 	{
-		updateOptions = UpdateNodes(mod, pos, fontSize);
+		updateOptions = UpdateChoices(mod, pos, fontSize);
 	}
 
 	return true;
 }
 
-bool DialogueTree::UpdateNodes(Module* mod, iPoint pos, int fontSize)
+bool DialogueTree::UpdateChoices(Module* mod, iPoint pos, int fontSize)
 {
 	GuiButton* button;
 
+	// TODO: Create buttons for choices
 	for (int i = 0; i < activeNode->choicesList.size(); i++)
 	{
 		const char* ch_option = activeNode->choicesList[i]->text.GetString();	// SString to const char*	
@@ -114,7 +111,7 @@ bool DialogueTree::EventReturn(Module* mod, iPoint pos)
 				if (app->input->nameEntered)
 				{
 					activeNode->choicesList[i]->text.Substitute("%x", app->input->playerName.c_str());	// Change %x for player's name - (const char* current word, const char* new word)
-					updateOptions = UpdateNodes(mod, pos, fontSize);
+					updateOptions = UpdateChoices(mod, pos, fontSize);
 				}
 			}
 
@@ -145,6 +142,7 @@ bool DialogueTree::EventReturn(Module* mod, iPoint pos)
 
 void DialogueTree::CleanUp()
 {
+	// TODO: Clean Up
 	for (int j = 0; j < nodeList.size(); j++)
 	{
 		nodeList[j]->CleanUp();

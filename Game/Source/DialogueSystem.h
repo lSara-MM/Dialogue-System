@@ -23,7 +23,6 @@ public:
 	bool OnGuiMouseClickEvent(GuiControl* control);
 	bool CleanUp();
 
-	void PerformDialogue(int treeId);
 
 	int LoadDialogue(const char* file, int dialogueID);
 	DialogueNode* LoadNodes(pugi::xml_node& xml_trees, DialogueTree* tree);
@@ -37,12 +36,11 @@ public:
 public:
 
 	DialogueChoice* playerInput;
-
 	DialogueTree* activeTree;
-	//vector <DialogueTree*> treeList;
 
 	SDL_Texture* textBox_tex;
 	const char* textBox_path;
+
 private:
 	pugi::xml_document dialogues;
 };

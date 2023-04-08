@@ -11,11 +11,14 @@
 #include "SString.h"
 #include <vector>
 
+// TODO: define the different events 
 #define DIALOGUE_INPUT 2
 #define DIALOGUE_SAVE 3
 #define DIALOGUE_IF 4
 
 using namespace std;
+
+// Tree -> nodes -> choices
 
 class DialogueChoice
 {
@@ -24,6 +27,7 @@ public:
 	~DialogueChoice() {};
 
 public:
+	// TODO: Add choices attributes
 	int choiceID;
 	SString text;
 	int nextNode;
@@ -39,9 +43,13 @@ public:
 	
 	void SplitText(SString text, int fontSize_, int max_chars_line_);
 
-	void CleanUp();
+	void CleanUp()
+	{
+		choicesList.clear();
+	}
 
 public:
+	// TODO: Add nodes attributes 
 	SString text;
 	int nodeID;
 	vector <DialogueChoice*> choicesList;
@@ -60,17 +68,17 @@ public:
 	~DialogueTree() {};
 
 	bool UpdateTree(float dt, Module* mod, iPoint pos);
-	bool UpdateNodes(Module* mod, iPoint pos, int fontSize);
+	bool UpdateChoices(Module* mod, iPoint pos, int fontSize);
 	bool EventReturn(Module* mod, iPoint pos);
 	void CleanUp();
 
 public:
+	// TODO: Create tree structure
 	int treeID;
 	bool active = false;
 	vector <DialogueNode*> nodeList;
-
-
 	DialogueNode* activeNode;
+
 
 	List <GuiButton*> listDialogueButtons;
 	int GUI_id = 0;

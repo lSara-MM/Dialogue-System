@@ -60,9 +60,7 @@ bool Scene::PostUpdate()
 	
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && app->dialogueSystem->activeTree == nullptr)
 	{
-		// Que es millor, carregar-ho abans i activar-ho a quan x event o carregar-ho quan sigui necessari?
 		dialogueID = app->dialogueSystem->LoadDialogue("dialogues.xml", 0);
-		//app->dialogueSystem->treeList[dialogueID]->active = true;
 	}
 
 
