@@ -148,7 +148,7 @@ bool DialogueSystem::LoadDialogueState()
 	}
 	else
 	{
-		// TODO: Load player's name and important choices
+		// TODO 7: Load player's name and important choices from xml
 
 		app->input->playerName = temp.c_str();
 		app->input->nameEntered = true;
@@ -163,7 +163,7 @@ bool DialogueSystem::SaveDialogueState()
 {
 	bool ret = true;
 
-	// TODO 1: Save player's name and important choices
+	// TODO 7: Save player's name and important choices
 	
 	return ret;
 }

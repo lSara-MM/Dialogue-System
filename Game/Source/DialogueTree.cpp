@@ -11,7 +11,7 @@ void DialogueNode::SplitText(SString text_, int fontSize_, int max_chars_line_)
 {
 	string line = text_.GetString();
 
-	// TODO: adapt text to the text box
+	// TODO 6: adapt text to the text box
 	
 
 	trimmed = true;
@@ -28,7 +28,7 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 	fontSize = 24;
 	max_chars_line = fontSize * 3;
 
-	// TODO: Substitute player's name in text and choices if needed
+	// TODO 6: Substitute player's name in text and choices if needed
 	
 
 	if (!activeNode->trimmed)
@@ -36,7 +36,7 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 		activeNode->SplitText(activeNode->text, fontSize, max_chars_line);
 	}
 
-	// TODO: Render dialogue in text box
+	// TODO 6: Render dialogue in text box
 	
 
 	EventReturn(mod, pos);
@@ -112,5 +112,5 @@ bool DialogueTree::EventReturn(Module* mod, iPoint pos)
 
 void DialogueTree::CleanUp()
 {
-	// TODO: Clean Up Nodes and choices
+	// TODO 5: Clean Up Nodes and choices
 }
