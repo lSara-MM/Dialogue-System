@@ -61,19 +61,15 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 	LOG("Event by %d ", control->id);
 
 	// TODO: Buttons ID match the choice ID. Use it to access to its attributes
-	playerInput = activeTree->activeNode->choicesList[control->id];
+	
 
 	// TODO: Save important choices
-	if (playerInput->eventReturn == DIALOGUE_SAVE)
-	{
-		activeTree->activeNode->playerAnswer = control->id;
-		SaveDialogueState();
-	}
+	
 
 	// Check if last node
 	if (playerInput->nextNode != -1)
 	{
-		activeTree->activeNode = activeTree->nodeList[playerInput->nextNode];
+		// TODO: If not last node, set active node next node
 		activeTree->updateOptions = false;
 	} 
 	else // If choice leads to the end of the conversation, change active node to last node
@@ -89,12 +85,6 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 bool DialogueSystem::CleanUp()
 {
 	// TODO: Clean Up 
-	if (activeTree != nullptr)
-	{
-		activeTree->nodeList.clear();
-		delete activeTree;
-		activeTree = nullptr;
-	}
 
 	app->input->getInput = false;
 	app->input->nameEntered = false;
@@ -120,22 +110,7 @@ int DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 	else
 	{		
 		// TODO: Load the dialogue tree
-		pugi::xml_node pugiNode = dialogues.first_child().first_child();
-
-		for (int i = 0; i <= dialogueID && pugiNode != NULL; i++)
-		{
-			 if (pugiNode.attribute("ID").as_int() == dialogueID)
-			 {
-				 tree->treeID = pugiNode.attribute("ID").as_int();		
-				 tree->activeNode = LoadNodes(pugiNode, tree);
-				 activeTree = tree;	 
-				 break;
-			 }
-			 else
-			 {
-				 pugiNode = pugiNode.next_sibling("dialogueTree");
-			 }
-		}
+		
 	}
 
 	return dialogueID;
@@ -146,19 +121,7 @@ DialogueNode* DialogueSystem::LoadNodes(pugi::xml_node& xml_trees, DialogueTree*
 	DialogueNode* first_node = new DialogueNode;
 
 	// TODO: Load tree nodes and save first node. Add all nodes to the list in tree
-	for (pugi::xml_node pugiNode = xml_trees.child("node"); pugiNode != NULL; pugiNode = pugiNode.next_sibling("node"))
-	{
-		DialogueNode* node = new DialogueNode;
-
-		node->nodeID = pugiNode.attribute("id").as_int();
-		node->text = pugiNode.attribute("text").as_string();
-
-		LoadChoices(pugiNode, node);
-
-		tree->nodeList.push_back(node);
-
-		if (node->nodeID == 0) { first_node = node; }	// return the first node to set as the active one
-	}
+	
 
 	return first_node;
 }
@@ -166,16 +129,7 @@ DialogueNode* DialogueSystem::LoadNodes(pugi::xml_node& xml_trees, DialogueTree*
 void DialogueSystem::LoadChoices(pugi::xml_node& xml_node, DialogueNode* node)
 {
 	// TODO: Load all choices and add them to the list in node
-	for (pugi::xml_node choice = xml_node.child("choice"); choice != NULL; choice = choice.next_sibling("choice"))
-	{
-		DialogueChoice* option = new DialogueChoice;
-		option->nextNode = choice.attribute("nextNode").as_int();
-		option->text = choice.attribute("option").as_string();
-	
-		option->eventReturn = choice.attribute("eventReturn").as_int();
 
-		node->choicesList.push_back(option);
-	}
 }
 
 
@@ -195,21 +149,11 @@ bool DialogueSystem::LoadDialogueState()
 	else
 	{
 		// TODO: Load player's name and important choices
-		string temp = node.child("player").attribute("player_name").as_string();
+
 		app->input->playerName = temp.c_str();
 		app->input->nameEntered = true;
 
-		for (size_t i = 0; i < activeTree->nodeList.size() && !node.child("node").empty(); i++)
-		{
-			for (int j = 0; j < activeTree->nodeList[i]->choicesList.size(); j++)
-			{
-				if (activeTree->nodeList[i]->choicesList[j]->eventReturn == 3)
-				{
-					activeTree->nodeList[i]->nodeID = node.child("node").attribute("id").as_int();
-					activeTree->nodeList[i]->playerAnswer = node.child("node").attribute("answer").as_int();
-				}
-			}
-		}
+		
 	}
 
 	return ret;
@@ -220,32 +164,6 @@ bool DialogueSystem::SaveDialogueState()
 	bool ret = true;
 
 	// TODO: Save player's name and important choices
-	pugi::xml_document* saveDoc = new pugi::xml_document();
-	pugi::xml_node node = saveDoc->append_child("save_choices");
-
-
-	pugi::xml_node player = node.append_child("player");
-
-	// save player's name
-	player.append_attribute("player_name") = app->input->playerName.c_str();
-
-	// save important choices
-	for (size_t i = 0; i < activeTree->nodeList.size(); i++)
-	{
-		for (int j = 0; j < activeTree->nodeList[i]->choicesList.size(); j++)
-		{
-			if (activeTree->nodeList[i]->playerAnswer > -1 && activeTree->nodeList[i]->choicesList[j]->eventReturn == 3)
-			{
-				player = node.append_child("node");
-				player.append_attribute("id") = activeTree->nodeList[i]->nodeID;
-				player.append_attribute("answer") = activeTree->nodeList[i]->playerAnswer;
-				player.append_attribute("text") = activeTree->nodeList[i]->choicesList[activeTree->nodeList[i]->playerAnswer]->text.GetString();
-				break;
-			}
-		}
-	}
-
-	ret = saveDoc->save_file("save_dialogue.xml");
-
+	
 	return ret;
 }

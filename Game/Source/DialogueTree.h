@@ -27,7 +27,7 @@ public:
 	~DialogueChoice() {};
 
 public:
-	// TODO: Add choices attributes
+	// DONE: Add choices attributes
 	int choiceID;
 	SString text;
 	int nextNode;
@@ -49,7 +49,7 @@ public:
 	}
 
 public:
-	// TODO: Add nodes attributes 
+	// DONE: Add nodes attributes 
 	SString text;
 	int nodeID;
 	vector <DialogueChoice*> choicesList;
@@ -73,7 +73,7 @@ public:
 	void CleanUp();
 
 public:
-	// TODO: Create tree structure
+	// DONE: Create tree structure
 	int treeID;
 	bool active = false;
 	vector <DialogueNode*> nodeList;
