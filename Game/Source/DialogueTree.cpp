@@ -53,7 +53,7 @@ bool DialogueTree::UpdateChoices(Module* mod, iPoint pos, int fontSize)
 {
 	GuiButton* button;
 
-	// TODO: Create buttons for choices
+	// TODO 3: Create buttons for choices
 	for (int i = 0; i < activeNode->choicesList.size(); i++)
 	{
 		

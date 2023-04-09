@@ -60,16 +60,16 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 {
 	LOG("Event by %d ", control->id);
 
-	// TODO: Buttons ID match the choice ID. Use it to access to its attributes
+	// TODO 4: Buttons ID match the choice ID. Use it to access to its attributes
 	
 
-	// TODO: Save important choices
+	// TODO 4: Save important choices
 	
 
 	// Check if last node
 	if (playerInput->nextNode != -1)
 	{
-		// TODO: If not last node, set active node next node
+		// TODO 4: If not last node, set active node next node
 		activeTree->updateOptions = false;
 	} 
 	else // If choice leads to the end of the conversation, change active node to last node
@@ -84,7 +84,7 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 
 bool DialogueSystem::CleanUp()
 {
-	// TODO: Clean Up 
+	// TODO 5: Clean Up 
 
 	app->input->getInput = false;
 	app->input->nameEntered = false;
@@ -109,7 +109,7 @@ int DialogueSystem::LoadDialogue(const char* file, int dialogueID)
 	}
 	else
 	{		
-		// TODO: Load the dialogue tree
+		// TODO 1: Load the dialogue tree
 		
 	}
 
@@ -120,7 +120,7 @@ DialogueNode* DialogueSystem::LoadNodes(pugi::xml_node& xml_trees, DialogueTree*
 {
 	DialogueNode* first_node = new DialogueNode;
 
-	// TODO: Load tree nodes and save first node. Add all nodes to the list in tree
+	// TODO 1: Load tree nodes and save first node. Add all nodes to the list in tree
 	
 
 	return first_node;
@@ -128,7 +128,7 @@ DialogueNode* DialogueSystem::LoadNodes(pugi::xml_node& xml_trees, DialogueTree*
 
 void DialogueSystem::LoadChoices(pugi::xml_node& xml_node, DialogueNode* node)
 {
-	// TODO: Load all choices and add them to the list in node
+	// TODO 1: Load all choices and add them to the list in node
 
 }
 
@@ -163,7 +163,7 @@ bool DialogueSystem::SaveDialogueState()
 {
 	bool ret = true;
 
-	// TODO: Save player's name and important choices
+	// TODO 1: Save player's name and important choices
 	
 	return ret;
 }

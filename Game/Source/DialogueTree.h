@@ -11,7 +11,7 @@
 #include "SString.h"
 #include <vector>
 
-// TODO: define the different events 
+// TODO 2: define the different events 
 #define DIALOGUE_INPUT 2
 #define DIALOGUE_SAVE 3
 #define DIALOGUE_IF 4
