@@ -86,7 +86,7 @@ bool DialogueTree::UpdateChoices(Module* mod, iPoint pos, int fontSize)
 		int h = fontSize + fontSize / 4;
 		SDL_Rect bounds = { app->win->GetWidth() - w, pos.y - (h + fontSize) * (i + 1), w, h};
 
-		button = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, i + GUI_id, ch_option, bounds, fontSize, mod);
+		button = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, i, ch_option, bounds, fontSize, mod);
 		button->state = GuiControlState::NORMAL;
 		listDialogueButtons.Add(button);
 	}

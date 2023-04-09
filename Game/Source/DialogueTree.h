@@ -81,7 +81,6 @@ public:
 
 
 	List <GuiButton*> listDialogueButtons;
-	int GUI_id = 0;
 
 	bool updateOptions;
 	int fontSize;
