@@ -1,4 +1,6 @@
-# Dialogue Systems ![lSara-MM]https://github.com/lSara-MM/Dialogue-System
+> [lSara-MM](https://github.com/lSara-MM/Dialogue-System)
+
+# Dialogue Systems 
 
 ## 1. What are dialogue systems
 
@@ -441,4 +443,4 @@ Other projects
 - [Bookfan97](https://github.com/Bookfan97/DialogSystem)
 
 
-> Link to my github: ![lSara-MM]https://github.com/lSara-MM/Dialogue-System
+> Link to my github: [lSara-MM](https://github.com/lSara-MM/Dialogue-System)
