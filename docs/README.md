@@ -434,7 +434,11 @@ pugi::xml_document gameStateFile;
 
 > Have in mind that those functions will only be called when specified and NOT every time the game is saved like the other modules. 
 
-## 5. References
+## 5. Conclusions
+There are two types of players: the vast majority who won't pay attention to the dialogue because they crave action, and the ones who will carefully read through every word. However, both groups expect the dialogue to be well done. To write good dialogue, keep in mind the tips outlined in part #3 and try to engage your audience in a unique way. This could involve using humor, implementing an original technique to showcase conversations, or anything that differentiates your game from others.
+
+
+## 6. References
 - [defining-dialogue-systems](https://www.gamedeveloper.com/design/defining-dialogue-systems)
 
 - [successful-in-game-dialogue-should-carry-players-forward](https://www.polygon.com/2014/3/17/5519270/successful-in-game-dialogue-should-carry-players-forward#:~:text=%22Conversations%20are%20a%20hallmark%20of,to%20new%20characters%20and%20locations)
