@@ -50,7 +50,17 @@ Despite that, there are some games that use an evolved version whither the playe
 | Detroit: Become Human (2018) |  |
 | ----------- | ----------- |
 | ![Detroit: Become Human (2018)](https://i.redd.it/k9tj3vqm4hi31.png) | ![Detroit: Become Human (Choices Tree)](https://www.kotaku.com.au/wp-content/uploads/sites/3/2018/04/detroit-become-human-2.jpg?quality=80&w=1280)|
-			
+
+Some advantages of using this method are:
+1. **Character Customization:** Choices made by the player in dialogue can influence their character's personality and traits, allowing the player to create their own unique and personalized story.
+
+2. **Immersion**: Interactivity and the ability to influence the story can increase the feeling of being in control.
+
+3. **Variety in Narrative**: The method can allow for a more complex and in-depth narrative, with multiple subplots and supporting characters who can have their own story arcs.
+
+4. **Variety of Tones**: Dialogue can have different tones, from comical to serious, which can help create a distinctive atmosphere and tone for the game.
+
+5. **Hidden Answers**: Branching dialogue can include hidden or secret answers that are only revealed if the player selects specific options or performs particular actions, which can increase in-game exploration and discovery.
 
 ### 2.3. Hub-and-Spokes
 In a hub-and-spoke format, the player selects conversation options from a central "hub." Upon selection, the conversation branches out into a series of unique lines and additional response options, until that particular branch has been fully explored. The player then returns to the hub and can select a different option to explore another branch.  
